@@ -3,6 +3,8 @@
 cd /home/ubuntu
 mkdir install
 
+
+sudo apt-get install -y libavformat-dev libswscale-dev libpq-dev
 sudo apt-get install -y libavformat-dev
 sudo apt-get install -y libswscale-dev
 sudo apt-get install -y libpq-dev
@@ -33,7 +35,7 @@ cd freeswitch-1.10.3.-release/
 sudo ./configure -C > /home/ubuntu/install/freeswitch.configure-c.log
 sudo make >  /home/ubuntu/install/freeswitch.make.log
 
-sudo make install
+sudo make install > /home/ubuntu/install/freeswitch.install.log
 
 sudo make all cd-sounds-install cd-moh-install >  /home/ubuntu/install/sound.make.log
 sudo ln -s /usr/local/freeswitch/bin/freeswitch /usr/bin/
@@ -65,7 +67,7 @@ sudo cp ./WebRTC/conf/autoload_configs/switch.conf.xml /usr/local/freeswitch/con
 sudo systemctl restart freeswitch.service
 sudo systemctl status freeswitch.service > freeswitch.status.2
 
-sudo apt-get install coturn
+sudo apt-get install -y coturn
 sudo cp /etc/turnserver.conf /etc/turnserver.conf.backup
 cd /home/ubuntu/
 mkdir coturn
@@ -76,3 +78,6 @@ echo syslog >> turnserver.conf
 sudo cp turnserver.conf /etc/turnserver.conf
 sudo systemctl start coturn
 sudo systemctl status coturn > coturn.status
+sudo lsof -n -P -i > ports.log
+
+sudo echo "Done" > /home/ubuntu/install/done.log
