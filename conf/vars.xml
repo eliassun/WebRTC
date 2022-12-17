@@ -280,8 +280,7 @@
        use different addresses where this variable appears.
        Used by: dingaling.conf.xml
   -->
-  <X-PRE-PROCESS cmd="set" data="bind_server_ip=3.132.13.120"/>
-
+  <X-PRE-PROCESS cmd="exec-set" data="curl -s http://checkip.amazonaws.com"/>
   <!-- NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE
 
        If you're going to load test FreeSWITCH please input real IP addresses
@@ -298,8 +297,7 @@
        If unspecified, the bind_server_ip value is used.
        Used by: sofia.conf.xml dingaling.conf.xml
   -->
-  <X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=3.132.13.120"/>
-
+  <X-PRE-PROCESS cmd="exec-set" data="external_rtp_ip=curl -s http://checkip.amazonaws.com"/>
   <!-- external_sip_ip
       Used as the public IP address for SDP.
        Can be an one of:
@@ -311,8 +309,7 @@
        If unspecified, the bind_server_ip value is used.
        Used by: sofia.conf.xml dingaling.conf.xml
   -->
-  <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=3.132.13.120"/>
-
+  <X-PRE-PROCESS cmd="exec-set" data="external_sip_ip=curl -s http://checkip.amazonaws.com"/>
   <!-- unroll-loops
        Used to turn on sip loopback unrolling.
   -->

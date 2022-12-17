@@ -47,6 +47,7 @@ sudo chmod -R ug=rwX,o= /usr/local/freeswitch/
 sudo chmod -R u=rwx,g=rx /usr/local/freeswitch/bin/
 
 cd  /home/ubuntu/install
+sudo chmown -R
 sudo wget https://eliassun.github.io/freeswitch.service
 sudo cp freeswitch.service /etc/systemd/system/freeswitch.service
 sudo chmod ugo+x /etc/systemd/system/freeswitch.service
@@ -54,3 +55,24 @@ sudo systemctl start freeswitch.service
 sudo systemctl enable freeswitch.service
 sudo systemctl status freeswitch.service > freeswitch.status
 
+sudo git clone https://github.com/eliassun/WebRTC.git
+sudo cp ./WebRTC/conf/vars.xml /usr/local/freeswitch/conf/vars.xml
+sudo cp ./WebRTC/conf/autoload_configs/verto.conf.xml /usr/local/freeswitch/conf/autoload_configs/verto.conf.xml
+sudo cp ./WebRTC/conf/sip_profiles/internal.xml /usr/local/freeswitch/conf/sip_profiles/internal.xml
+sudo cp ./WebRTC/conf/conf/sip_profiles/external.xml /usr/local/freeswitch/conf/sip_profiles/external.xml
+sudo cp ./WebRTC/conf/autoload_configs/switch.conf.xml /usr/local/freeswitch/conf/autoload_configs/switch.conf.xml
+
+sudo systemctl restart freeswitch.service
+sudo systemctl status freeswitch.service > freeswitch.status.2
+
+sudo apt-get install coturn
+sudo cp /etc/turnserver.conf /etc/turnserver.conf.backup
+cd /home/ubuntu/
+mkdir coturn
+cd coturn
+echo listening-ip=0.0.0.0 >> turnserver.conf
+echo external-ip=$(curl -s http://checkip.amazonaws.com) >> turnserver.conf
+echo syslog >> turnserver.conf
+sudo cp turnserver.conf /etc/turnserver.conf
+sudo systemctl start coturn
+sudo systemctl status coturn > coturn.status
