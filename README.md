@@ -1,11 +1,11 @@
 # WebRTC
 These scripts will automate a voice/video service based on FreeSWITCH by Terraform, including:
 
-1. Install, update and upgrade Ubuntu 22 to the latest version
+1. Install, update and upgrade Ubuntu20 to the latest version
 
 2. Install FreeSWITCH from source code
 
-3. Configure FreeSWITCH to be ready for the service on AWS
+3. Make FreeSWITCH configured and be ready to service on AWS
 
 4. Install Coturn
 
