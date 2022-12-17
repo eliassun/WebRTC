@@ -100,6 +100,7 @@ sudo systemctl status coturn > /home/ubuntu/install/coturn.status
 sudo lsof -n -P -i > /home/ubuntu/install/ports.log
 
 sudo -rf /usr/src/freeswitch-1.10.3.-release.zip
+sudo -rf /usr/src/freeswitch-1.10.3*
 
 sudo echo $(curl -s http://checkip.amazonaws.com) > /home/ubuntu/install/done.log
 sudo echo "Done" >> /home/ubuntu/install/done.log

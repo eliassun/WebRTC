@@ -1,11 +1,11 @@
 # WebRTC
-These scripts will automate the setup of a FreeSWITCH by Terraform, including:
+These scripts will automate a voice/video service based on FreeSWITCH by Terraform, including:
 
 1. Install, update and upgrade Ubuntu 22 to the latest version
 
 2. Install FreeSWITCH from source code
 
-3. Configure FreeSWITCH to run on AWS
+3. Configure FreeSWITCH to be ready for the service on AWS
 
 4. Install Coturn
 
@@ -19,5 +19,6 @@ https://eliassun.github.io/freeswitch_setup.txt
 2. Configure FreeSWITCH NAT Traversal, STUN/TURN and Debug
 https://eliassun.github.io/freeswitch_sip.txt
 
-The automation process will take about 30 minutes to finish. During the installation, it will keep output logs 
-saved into /home/ubuntu/install. The last log name will be done.log.
+The automation process will take about 35 minutes to finish. During the installation, it will keep output logs 
+saved into /home/ubuntu/install. The last log name will be done.log. Finally, check the ports.log to see if the 
+freeswitch and coturn services are in service state.

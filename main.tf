@@ -89,34 +89,6 @@ resource "aws_security_group" "prod_1_sg_1" {
         cidr_blocks = ["0.0.0.0/0"]
     }
     ingress {
-        description = "SIP"
-        from_port   = 5060
-        to_port     = 5060
-        protocol    = "udp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
-        description = "SIP"
-        from_port   = 5061
-        to_port     = 5061
-        protocol    = "udp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
-        description = "SIP"
-        from_port   = 5060
-        to_port     = 5060
-        protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
-        description = "SIP"
-        from_port   = 5061
-        to_port     = 5061
-        protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
         description = "stun"
         from_port   = 3478
         to_port     = 3479
@@ -124,9 +96,58 @@ resource "aws_security_group" "prod_1_sg_1" {
         cidr_blocks = ["0.0.0.0/0"]
     }
     ingress {
+        description = "SIP"
+        from_port   = 5060
+        to_port     = 5060
+        protocol    = "udp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "SIP"
+        from_port   = 5060
+        to_port     = 5060
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "SIP"
+        from_port   = 5080
+        to_port     = 5080
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "SIP"
+        from_port   = 5080
+        to_port     = 5080
+        protocol    = "udp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "Websocket"
+        from_port   = 5066
+        to_port     = 5066
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "Websocket"
+        from_port   = 7443
+        to_port     = 7443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "Websocket"
+        from_port   = 8081
+        to_port     = 8082
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
         description = "fs-rtp"
-        from_port   = 500
-        to_port     = 55000
+        from_port   = 16383
+        to_port     = 32769
         protocol    = "udp"
         cidr_blocks = ["0.0.0.0/0"]
     }
