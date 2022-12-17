@@ -3,8 +3,6 @@
 cd /home/ubuntu
 mkdir install
 
-
-sudo apt-get install -y libavformat-dev libswscale-dev libpq-dev
 sudo apt-get install -y libavformat-dev
 sudo apt-get install -y libswscale-dev
 sudo apt-get install -y libpq-dev
@@ -18,6 +16,9 @@ cd libks
 sudo cmake .
 sudo make > /home/ubuntu/install/libks.make.log
 sudo make install
+sudo make clean
+cd /usr/src
+sudo rm -rf libks
 
 cd /usr/src
 sudo git clone https://github.com/signalwire/signalwire-c.git
@@ -25,11 +26,32 @@ cd signalwire-c
 sudo cmake .
 sudo make > /home/ubuntu/install/signalwire-c.make.log
 sudo make install
+sudo make clean
+cd /usr/src
+sudo rm -rf signalwire-c
+
+sudo apt-get install -y libavformat-dev >> /home/ubuntu/install/libavformat.log
+sudo apt-get install -y libswscale-dev >> /home/ubuntu/install/libavformat.log
+sudo apt-get install -y libpq-dev >> /home/ubuntu/install/libavformat.log
+
+cd /usr/src
+sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ffmpeg/7:4.2.2-1ubuntu1/ffmpeg_4.2.2.orig.tar.xz
+sudo tar -xf ffmpeg_4.2.2.orig.tar.xz
+cd ffmpeg-4.2.2
+sudo ./configure --enable-shared --enable-gpl  --enable-pic
+sudo make > /home/ubuntu/install/ffmpeg_4.log
+sudo make install >> /home/ubuntu/install/ffmpeg_4.log
+cd /usr/src
+sudo rm -rf ffmpeg_4.2.2.orig.tar.xz
+sudo rm -rf ffmpeg-4.2.2
+
+
 
 cd /usr/src
 sudo wget https://files.freeswitch.org/freeswitch-releases/freeswitch-1.10.3.-release.zip
 sudo apt -y install unzip
 sudo unzip freeswitch-1.10.3.-release.zip
+sudo -rf freeswitch-1.10.3.-release.zip
 cd freeswitch-1.10.3.-release/
 
 sudo ./configure -C > /home/ubuntu/install/freeswitch.configure-c.log
@@ -69,15 +91,15 @@ sudo systemctl status freeswitch.service > freeswitch.status.2
 
 sudo apt-get install -y coturn
 sudo cp /etc/turnserver.conf /etc/turnserver.conf.backup
-cd /home/ubuntu/
-mkdir coturn
-cd coturn
-echo listening-ip=0.0.0.0 >> turnserver.conf
-echo external-ip=$(curl -s http://checkip.amazonaws.com) >> turnserver.conf
-echo syslog >> turnserver.conf
-sudo cp turnserver.conf /etc/turnserver.conf
+echo listening-ip=0.0.0.0 >> /home/ubuntu/install/turnserver.conf
+echo external-ip=$(curl -s http://checkip.amazonaws.com) >> /home/ubuntu/install/turnserver.conf
+echo syslog >> /home/ubuntu/install/turnserver.conf
+sudo cp /home/ubuntu/install/turnserver.conf /etc/turnserver.conf
 sudo systemctl start coturn
-sudo systemctl status coturn > coturn.status
-sudo lsof -n -P -i > ports.log
+sudo systemctl status coturn > /home/ubuntu/install/coturn.status
+sudo lsof -n -P -i > /home/ubuntu/install/ports.log
 
-sudo echo "Done" > /home/ubuntu/install/done.log
+sudo -rf /usr/src/freeswitch-1.10.3.-release.zip
+
+sudo echo $(curl -s http://checkip.amazonaws.com) > /home/ubuntu/install/done.log
+sudo echo "Done" >> /home/ubuntu/install/done.log

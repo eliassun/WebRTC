@@ -19,5 +19,5 @@ https://eliassun.github.io/freeswitch_setup.txt
 2. Configure FreeSWITCH NAT Traversal, STUN/TURN and Debug
 https://eliassun.github.io/freeswitch_sip.txt
 
-The automation process will take 20 minutes. During the installation, it will keep output logs 
-under the /home/ubuntu/install. The last log name is done.log.
+The automation process will take about 30 minutes to finish. During the installation, it will keep output logs 
+saved into /home/ubuntu/install. The last log name will be done.log.
