@@ -5,11 +5,15 @@ These scripts will automate a voice/video service based on FreeSWITCH by Terrafo
 
 * Install FreeSWITCH from source code
 
+* WebRTC Verto client for freeSWITCH1.8 and FreeSWITCH1.10
+
 * Make FreeSWITCH configured and be ready to service on AWS
 
 * Install Coturn
 
 * Configure security group for SIP, RTP and STUN
+
+* Enable WebRTC on freeSWITCH: https://eliassun.github.io/freeswitch_webrtc.txt 
 
 More:
 
