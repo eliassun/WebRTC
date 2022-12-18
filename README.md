@@ -25,7 +25,11 @@ freeswitch and coturn services are in service state.
 
 The automation process doesn't install the Verto WebRTC client, but the detail instruction is at https://eliassun.github.io/freeswitch_webrtc.txt .
 
-* Create an EC2 instance in AWS and run the FreeSWITCH service
+* Start to Run the Source Code
+
 Add the AWS keys into vairable.tf or put the keys file to the correct location
+
 terraform init
+
 terraform apply --auto-approve
+
