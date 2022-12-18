@@ -158,7 +158,22 @@ resource "aws_security_group" "prod_1_sg_1" {
         protocol    = "tcp"
         cidr_blocks = ["${data.external.local_env.result.local_public_ip}/32"]      
     }
+    ingress {
+        description = "https"
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        description = "http"
+        from_port   = 80
+        to_port     = 80
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
     egress {
+        description = "ICMP"
         from_port   = 0
         to_port     = 0
         protocol    = "-1"
