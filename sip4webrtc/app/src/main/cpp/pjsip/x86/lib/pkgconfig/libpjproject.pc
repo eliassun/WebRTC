@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/Users/eliassun/devlibs/wss/android-pjsip/build/x86
+exec_prefix=${prefix}
+libdir=/Users/eliassun/devlibs/wss/android-pjsip/build/x86/lib
+includedir=/Users/eliassun/devlibs/wss/android-pjsip/build/x86/include
+
+Name: libpjproject
+Description: Multimedia communication library
+URL: http://www.pjsip.org
+Version: 2.10
+Libs: -L${libdir} -lpjsua2-i686-pc-linux-android -lstdc++ -lpjsua-i686-pc-linux-android -lpjsip-ua-i686-pc-linux-android -lpjsip-simple-i686-pc-linux-android -lpjsip-i686-pc-linux-android -lpjmedia-codec-i686-pc-linux-android -lpjmedia-i686-pc-linux-android -lpjmedia-videodev-i686-pc-linux-android -lpjmedia-audiodev-i686-pc-linux-android -lpjmedia-i686-pc-linux-android -lpjnath-i686-pc-linux-android -lpjlib-util-i686-pc-linux-android  -lsrtp-i686-pc-linux-android -lresample-i686-pc-linux-android -lgsmcodec-i686-pc-linux-android -lspeex-i686-pc-linux-android -lilbccodec-i686-pc-linux-android -lg7221codec-i686-pc-linux-android -lyuv-i686-pc-linux-android -lwebrtc-i686-pc-linux-android  -lpj-i686-pc-linux-android -lssl -lcrypto -lm  /Users/eliassun/tools/android-ndk-r16b/sources/cxx-stl/llvm-libc++/libs/x86/libc++_shared.so -lOpenSLES -llog -lGLESv2 -lEGL -landroid
+Cflags: -I${includedir} -fno-exceptions -fno-rtti -fexceptions -frtti   -I/Users/eliassun/devlibs/wss/android-pjsip/build/x86/include -DPJ_AUTOCONF=1  -gcc-toolchain /Users/eliassun/tools/android-ndk-r16b/toolchains/x86-4.9/prebuilt/darwin-x86_64 -target i686-none-linux-android -ffunction-sections -funwind-tables -fPIC -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -I/Users/eliassun/tools/android-ndk-r16b/sources/cxx-stl/llvm-libc++/include -I/Users/eliassun/tools/android-ndk-r16b/sources/cxx-stl/llvm-libc++/../llvm-libc++abi/include -I/Users/eliassun/tools/android-ndk-r16b/sources/android/support/include -Ijni -DANDROID -D__ANDROID_API__=21 -Wa,--noexecstack -Wformat -Werror=format-security -mstackrealign --sysroot /Users/eliassun/tools/android-ndk-r16b/sysroot -isystem /Users/eliassun/tools/android-ndk-r16b/sysroot/usr/include/i686-linux-android   -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1 -I/Users/eliassun/devlibs/wss/android-pjsip/openssl/x86/include

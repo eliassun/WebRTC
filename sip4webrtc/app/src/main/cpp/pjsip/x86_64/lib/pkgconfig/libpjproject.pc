@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/Users/eliassun/devlibs/wss/android-pjsip/build/x86_64
+exec_prefix=${prefix}
+libdir=/Users/eliassun/devlibs/wss/android-pjsip/build/x86_64/lib
+includedir=/Users/eliassun/devlibs/wss/android-pjsip/build/x86_64/include
+
+Name: libpjproject
+Description: Multimedia communication library
+URL: http://www.pjsip.org
+Version: 2.10
+Libs: -L${libdir} -lpjsua2-x86_64-pc-linux-android -lstdc++ -lpjsua-x86_64-pc-linux-android -lpjsip-ua-x86_64-pc-linux-android -lpjsip-simple-x86_64-pc-linux-android -lpjsip-x86_64-pc-linux-android -lpjmedia-codec-x86_64-pc-linux-android -lpjmedia-x86_64-pc-linux-android -lpjmedia-videodev-x86_64-pc-linux-android -lpjmedia-audiodev-x86_64-pc-linux-android -lpjmedia-x86_64-pc-linux-android -lpjnath-x86_64-pc-linux-android -lpjlib-util-x86_64-pc-linux-android  -lsrtp-x86_64-pc-linux-android -lresample-x86_64-pc-linux-android -lgsmcodec-x86_64-pc-linux-android -lspeex-x86_64-pc-linux-android -lilbccodec-x86_64-pc-linux-android -lg7221codec-x86_64-pc-linux-android -lyuv-x86_64-pc-linux-android -lwebrtc-x86_64-pc-linux-android  -lpj-x86_64-pc-linux-android -lssl -lcrypto -lm  /Users/eliassun/tools/android-ndk-r16b/sources/cxx-stl/llvm-libc++/libs/x86_64/libc++_shared.so -lOpenSLES -llog -lGLESv2 -lEGL -landroid
+Cflags: -I${includedir} -fno-exceptions -fno-rtti -fexceptions -frtti   -I/Users/eliassun/devlibs/wss/android-pjsip/build/x86_64/include -DPJ_AUTOCONF=1  -gcc-toolchain /Users/eliassun/tools/android-ndk-r16b/toolchains/x86_64-4.9/prebuilt/darwin-x86_64 -target x86_64-none-linux-android -ffunction-sections -funwind-tables -fPIC -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -I/Users/eliassun/tools/android-ndk-r16b/sources/cxx-stl/llvm-libc++/include -I/Users/eliassun/tools/android-ndk-r16b/sources/cxx-stl/llvm-libc++/../llvm-libc++abi/include -I/Users/eliassun/tools/android-ndk-r16b/sources/android/support/include -Ijni -DANDROID -D__ANDROID_API__=21 -Wa,--noexecstack -Wformat -Werror=format-security --sysroot /Users/eliassun/tools/android-ndk-r16b/sysroot -isystem /Users/eliassun/tools/android-ndk-r16b/sysroot/usr/include/x86_64-linux-android   -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1 -I/Users/eliassun/devlibs/wss/android-pjsip/openssl/x86_64/include
