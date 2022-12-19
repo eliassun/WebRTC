@@ -25,6 +25,10 @@ freeswitch and coturn services are in service state.
 
 The automation process doesn't install the Verto WebRTC client, but the detail instruction is at https://eliassun.github.io/freeswitch_webrtc.txt .
 
+* sip4webrtc
+This is to build a native App based on C++ SIP lib and C++ WebRTC lib. sip4webrtc is still an early stage project.
+It currently built the PJSIP lib and WebRTC lib for the Android.
+
 * Start to Run the Source Code
 
 Add the AWS keys into vairable.tf or put the keys file to the correct location
