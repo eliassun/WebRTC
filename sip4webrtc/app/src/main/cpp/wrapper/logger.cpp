@@ -5,12 +5,13 @@
 #ifndef SIP4WEBRTC_LOGGER_CPP
 #define SIP4WEBRTC_LOGGER_CPP
 
-#include <jni.h>
-#include <android/log.h>
 #include <string>
 #include "./include/logger.h"
 #include "./include/sip.h"
 
+#if defined(__ANDROID__)
+#include <jni.h>
+#include <android/log.h>
 #define APP_NAME_PATH "com/voipeye/sip4webrtc"
 
 JavaVM* gjvm;
@@ -19,9 +20,6 @@ jmethodID	gjavaLog = NULL;
 jclass		gjavaLogClass = NULL;
 
 #define LOGCATWARN(...) __android_log_print(ANDROID_LOG_WARN, SIPTAG, __VA_ARGS__)
-
-jclass		getClass();
-jmethodID	getMethod();
 
 jclass getJavaLogClass() {
     if (NULL == gjavaLogClass) {
@@ -69,10 +67,10 @@ jmethodID getJavaLog() {
 }
 
 void addlog(int level, const char *file, int line, const char *func, const char *tag, const char *desc,
-                 int code, char *txt)
+                 int code, char *info)
 {
     if (level == LOG_LEVEL_LOCAL) {
-        __android_log_print(ANDROID_LOG_INFO, tag, "%s", txt);
+        __android_log_print(ANDROID_LOG_INFO, tag, "%s", info);
         return;
     }
 
@@ -86,7 +84,7 @@ void addlog(int level, const char *file, int line, const char *func, const char 
         int env_status = gjvm->GetEnv((void **)&jni_env, JNI_VERSION_1_6);
         if( env_status == JNI_EDETACHED )
             jint attachResult = gjvm->AttachCurrentThread(&jni_env , NULL );
-        jstring msg = jni_env->NewStringUTF(txt);
+        jstring msg = jni_env->NewStringUTF(info);
         switch(level) {
             case 5:
                 jni_env->CallStaticVoidMethod(cls, method, 0, 4, msg);
@@ -109,5 +107,6 @@ void addlog(int level, const char *file, int line, const char *func, const char 
         }
     }
 }
+#endif
 
 #endif //SIP4WEBRTC_LOGGER_CPP
