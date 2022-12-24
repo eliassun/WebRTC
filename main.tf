@@ -172,6 +172,13 @@ resource "aws_security_group" "prod_1_sg_1" {
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+    ingress {
+        description = "WebrtcDataChannel"
+        from_port   = 8000
+        to_port     = 8000
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
     egress {
         description = "ICMP"
         from_port   = 0
