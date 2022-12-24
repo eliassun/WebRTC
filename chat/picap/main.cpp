@@ -21,8 +21,10 @@
 #include <thread>
 #include <queue>
 #include <unistd.h>
+#include <nlohmann/json.hpp>
 #include "capture.h"
 
+using json = nlohmann::json;
 using namespace std::chrono_literals;
 using std::shared_ptr;
 using std::weak_ptr;
@@ -50,7 +52,8 @@ void sendScreen();
 std::string greceivedBuf = "";
 std::shared_ptr<rtc::DataChannel> gdc;
 std::string gmode = MODE_SLAVE;
-std::queue<std::string> gmsg;
+std::string gdadid = "";
+
 bool gdebug = false;
 
 int main(int argc, char **argv) try {
@@ -65,6 +68,9 @@ int main(int argc, char **argv) try {
 	    std::cout << "Run ./picap for dad mode. Run ./picap sweet for sweet mode." << std::endl;
 	    params.usage(EXIT_SUCCESS);
 	    return 0;
+	}
+	if (gmode == MODE_SLAVE) {
+	    gdadid = params.dadid();
 	}
     std::cout << "Mode: " << gmode << std::endl;
 	if (params.noStun()) {
@@ -86,7 +92,13 @@ int main(int argc, char **argv) try {
 	}
 
 	localId = randomId(8);
-	if (gmode == std::string(MODE_SLAVE)) {
+	if (gmode == std::string(MODE_MASTER)) {
+	    std::cout << "*********** dad ID ***********" << std::endl;
+	    std::cout << localId << std::endl;
+	    std::cout << "On the sweet's screen, run ./piap -o sweet -i dad_id_above ." << std::endl;
+	    std::cout << "Then it will only accept the command from this dad. Or it will accept a command from any dad." << std::endl;
+	    std::cout << "*********************************" << std::endl;
+	} else {
 	    std::cout << "*********** sweet ID ***********" << std::endl;
 	    std::cout << localId << std::endl;
 	    std::cout << "Please copy sweet ID to dad!!!" << std::endl;
@@ -200,7 +212,7 @@ int main(int argc, char **argv) try {
 		auto pc = createPeerConnection(config, ws, id);
 
 		// We are the offerer, so create a data channel to initiate the process
-		const std::string label = "screenshot";
+		const std::string label = "dad";
 		std::cout << "Creating DataChannel with label \"" << label << "\"" << std::endl;
 		gdc = pc->createDataChannel(label);
 		auto dc = gdc;
@@ -250,6 +262,7 @@ int main(int argc, char **argv) try {
             std::cin >> msg;
             std::cin.ignore();
             if (msg == std::string(SEND_CAPTURE)) {
+                msg = "{\"type\": \"" + msg + "\", \"id\": " + "\"" + localId + "\"}";
                 dc->send(msg);
             } else if (msg == std::string(LOCAL_OPEN_IMG)) {
                 open_image();
@@ -261,16 +274,7 @@ int main(int argc, char **argv) try {
     } else {
         std::cout << "In Salve mode, waiting for event from peer." << std::endl;
         while (true) {
-            if (!gmsg.empty()) {
-                std::string cmd = gmsg.front();
-                std::cout << "event: " << cmd << std::endl;
-                gmsg.pop();
-                if (cmd == std::string(SEND_CAPTURE)) {
-                    sendScreen();
-                }
-            } else {
-                sleep(1);
-            }
+            sleep(1);
         }
 
     }
@@ -332,26 +336,38 @@ shared_ptr<rtc::PeerConnection> createPeerConnection(const rtc::Configuration &c
 
 		dc->onMessage([id, wdc = make_weak_ptr(dc)](auto data) {
 		    if (std::holds_alternative<std::string>(data)) {
+		        std::string recv = std::get<std::string>(data);
+		        int len = recv.length();
                 std::cout << "Message from " << id << " received: " << std::get<std::string>(data) << std::endl;
-                if (std::get<std::string>(data) == std::string(SEND_CAPTURE)) {
-			        if (auto dc = wdc.lock()) {
-			            dc->send("{\"type\": \"feedback\", \"msg\": \"Received a screenshot capture req. doing...\"}");
-                        std::cout << "sending a screen" << std::endl;
-                        std::string screen = capture_screen();
-                        dc->send(std::string(SEND_START));
-                        int n = screen.length()/512;
-                        int pos = 0;
-                        for (int i = 0; i < n; i++) {
-                            dc->send(screen.substr(pos, 512));
-                            pos += 512;
+                std::string msgType = "";
+                std::string dadID = "";
+                if (len > 5 && recv[0] == '{') {
+                    auto cmd = json::parse(std::get<std::string>(data));
+                    msgType = cmd["type"];
+                    dadID = cmd["id"];
+                }
+                if (msgType == std::string(SEND_CAPTURE)) {
+                    if ((gdadid.length() > 0 && dadID == gdadid) || (gdadid.length() == 0)) {
+                        if (auto dc = wdc.lock()) {
+                            dc->send("{\"type\": \"feedback\", \"msg\": \"Received a screenshot capture req. doing...\"}");
+                            std::cout << "sending a screen" << std::endl;
+                            std::string screen = capture_screen();
+                            dc->send(std::string(SEND_START));
+                            int n = screen.length()/512;
+                            int pos = 0;
+                            for (int i = 0; i < n; i++) {
+                                dc->send(screen.substr(pos, 512));
+                                pos += 512;
+                            }
+                            if (screen.length() - pos > 0) {
+                                dc->send(screen.substr(pos, screen.length() - pos));
+                            }
+                            dc->send(std::string(SEND_END));
+                            std::cout << "sent a screen" << std::endl;
                         }
-                        if (screen.length() - pos > 0) {
-                            dc->send(screen.substr(pos, screen.length() - pos));
-                        }
-                        dc->send(std::string(SEND_END));
-                        std::cout << "sent a screen" << std::endl;
+			        } else {
+			            std::cout << "Expected dadid: " << gdadid << " Received dadid: " << dadID << std::endl;
 			        }
-
 			    }
 		   } else {
                 std::cout << "Binary message from " << id

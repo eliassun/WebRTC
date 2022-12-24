@@ -67,9 +67,10 @@ Cmdline::Cmdline (int argc, char *argv[]) // ISO C++17 not allowed: throw (std::
   _h = false;
   _o = "dad";
   _d = false;
+  _i = "";
 
   optind = 0;
-  while ((c = getopt_long (argc, argv, "s:t:w:x:o:d:enmhv", long_options, &optind)) != - 1)
+  while ((c = getopt_long (argc, argv, "s:t:w:x:o:d:i:enmhv", long_options, &optind)) != - 1)
     {
       switch (c)
         {
@@ -111,6 +112,10 @@ Cmdline::Cmdline (int argc, char *argv[]) // ISO C++17 not allowed: throw (std::
 
         case 'w':
           _w = optarg;
+          break;
+
+        case 'i':
+          _i = optarg;
           break;
 
         case 'x':
@@ -158,7 +163,7 @@ void Cmdline::usage (int status)
   else
     {
       std::cout << "\
-usage: " << _program_name << " [ -nstwxodh ] \n\
+usage: " << _program_name << " [ -nstwxodih ] \n\
 libdatachannel client implementing WebRTC Data Channels with WebSocket signaling\n\
    [ -n ] [ --noStun ] (type=FLAG)\n\
           Do NOT use a stun server (overrides -s and -t).\n\
@@ -174,6 +179,8 @@ libdatachannel client implementing WebRTC Data Channels with WebSocket signaling
           dad or sweet\n\
    [ -d ] [ --debug ] (type=FLAG)\n\
           Print debug message.\n\
+   [ -i ] [ --dadid ] (type=STRING, default="")\n\
+          dad ID.\n\
    [ -h ] [ --help ] (type=FLAG)\n\
           Display this help and exit.\n";
     }
