@@ -30,13 +30,34 @@ This is to build a native App based on C++ SIP lib and C++ WebRTC lib. sip4webrt
 It currently built the PJSIP lib and WebRTC lib for the Android.
 
 * picap for MacOS
-This is a c++ client using the WebRTC data channel to capture and send a screenshot encoded as base64, then the receiver will decode it back to 
-a picture. The receiver can be a c++ client or a web browser. 
+The detail is https://eliassun.github.io/daddyeye.html
+
+DaddyEye is a peer to peer screenshot capture command line software. NO Server Storage. DIFFERENT ID for every new connection.
+
+It has two modes: dad and sweet.
+
 Build:
+
 ./buid.sh
+
 Run:
-one laptop run ./picap, another laptop run ./picap. The "./picap" will create a ID, take a part's ID, then input that ID
-to another party. then key in any character will send a screenshot to the peer. 
+
+Run on dad mode
+./picap
+
+It will print a dad id as soon as it starts.
+
+Run on sweet mode:
+
+./picap -o sweet
+
+./picap -o sweet -i dad_id
+
+They will print a sweet id as soon as they start.
+
+The first command line will allow any dad to capture the screen if he knows the sweet's id.
+
+The 2nd command line will only allow one dad with the exact id to to capture the sweet's screen. So, the dad end needs to run first.
 
 * Start to create a network
 
