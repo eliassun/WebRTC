@@ -60,3 +60,7 @@ string capture_screen() {
    std::string result = exec("/usr/sbin/screencapture -C -x /tmp/picap.png");
    return encode_image("/tmp/picap.png");
 }
+
+void open_image() {
+    exec("open ./test_dec.png");
+}

@@ -41,6 +41,8 @@ private:
   std::string _w;
   int _x;
   bool _h;
+  std::string _o;
+  bool _d;
 
   /* other stuff to keep track of */
   std::string _program_name;
@@ -64,6 +66,8 @@ public:
   std::string webSocketServer () const { return _w; }
   int webSocketPort () const { return _x; }
   bool h () const { return _h; }
+  std::string mode () const { return _o; }
+  bool d () const { return _d; }
 };
 
 #endif

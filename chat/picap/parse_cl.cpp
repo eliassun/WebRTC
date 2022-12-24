@@ -49,6 +49,8 @@ Cmdline::Cmdline (int argc, char *argv[]) // ISO C++17 not allowed: throw (std::
     {"stunPort", required_argument, NULL, 't'},
     {"webSocketServer", required_argument, NULL, 'w'},
     {"webSocketPort", required_argument, NULL, 'x'},
+    {"mode", required_argument, NULL, 'o'},
+    {"debug", no_argument, NULL, 'd'},
     {"help", no_argument, NULL, 'h'},
     {NULL, 0, NULL, 0}
   };
@@ -63,9 +65,11 @@ Cmdline::Cmdline (int argc, char *argv[]) // ISO C++17 not allowed: throw (std::
   _w = "www.voipeye.com";
   _x = 8000;
   _h = false;
+  _o = "dad";
+  _d = false;
 
   optind = 0;
-  while ((c = getopt_long (argc, argv, "s:t:w:x:enmhv", long_options, &optind)) != - 1)
+  while ((c = getopt_long (argc, argv, "s:t:w:x:o:d:enmhv", long_options, &optind)) != - 1)
     {
       switch (c)
         {
@@ -80,6 +84,14 @@ Cmdline::Cmdline (int argc, char *argv[]) // ISO C++17 not allowed: throw (std::
         case 's':
           _s = optarg;
           break;
+
+        case 'o':
+          _o = optarg;
+          break;
+
+         case 'd':
+            _d = true;
+            break;
 
         case 't':
           _t = atoi (optarg);
@@ -146,7 +158,7 @@ void Cmdline::usage (int status)
   else
     {
       std::cout << "\
-usage: " << _program_name << " [ -enstwxhv ] \n\
+usage: " << _program_name << " [ -nstwxodh ] \n\
 libdatachannel client implementing WebRTC Data Channels with WebSocket signaling\n\
    [ -n ] [ --noStun ] (type=FLAG)\n\
           Do NOT use a stun server (overrides -s and -t).\n\
@@ -158,6 +170,10 @@ libdatachannel client implementing WebRTC Data Channels with WebSocket signaling
           Web socket server URL or IP address.\n\
    [ -x ] [ --webSocketPort ] (type=INTEGER, range=0...65535, default=8000)\n\
           Web socket server port.\n\
+   [ -o ] [ --mode ] (type=STRING, default=dad)\n\
+          dad or sweet\n\
+   [ -d ] [ --debug ] (type=FLAG)\n\
+          Print debug message.\n\
    [ -h ] [ --help ] (type=FLAG)\n\
           Display this help and exit.\n";
     }

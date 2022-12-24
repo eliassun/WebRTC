@@ -1,3 +1,7 @@
+/*
+   main.cpp
+   Copyright (C) 2022-2028 Elias Sun
+*/
 
 #include "rtc/rtc.hpp"
 
@@ -14,6 +18,9 @@
 #include <stdexcept>
 #include <thread>
 #include <unordered_map>
+#include <thread>
+#include <queue>
+#include <unistd.h>
 #include "capture.h"
 
 using namespace std::chrono_literals;
@@ -30,7 +37,21 @@ std::unordered_map<std::string, shared_ptr<rtc::DataChannel>> dataChannelMap;
 shared_ptr<rtc::PeerConnection> createPeerConnection(const rtc::Configuration &config,
                                                      weak_ptr<rtc::WebSocket> wws, std::string id);
 std::string randomId(size_t length);
-bool sendScreen(shared_ptr<rtc::DataChannel> dc);
+void sendScreen();
+
+#define MODE_MASTER "dad"
+#define MODE_SLAVE "sweet"
+
+#define SEND_START  "send_start"
+#define SEND_END "send_end"
+#define SEND_CAPTURE "getscreen"
+#define LOCAL_OPEN_IMG "open"
+
+std::string greceivedBuf = "";
+std::shared_ptr<rtc::DataChannel> gdc;
+std::string gmode = MODE_SLAVE;
+std::queue<std::string> gmsg;
+bool gdebug = false;
 
 int main(int argc, char **argv) try {
 	Cmdline params(argc, argv);
@@ -39,6 +60,13 @@ int main(int argc, char **argv) try {
 
 	rtc::Configuration config;
 	std::string stunServer = "";
+	gmode = params.mode();
+	if (gmode != MODE_SLAVE && gmode != MODE_MASTER) {
+	    std::cout << "Run ./picap for dad mode. Run ./picap sweet for sweet mode." << std::endl;
+	    params.usage(EXIT_SUCCESS);
+	    return 0;
+	}
+    std::cout << "Mode: " << gmode << std::endl;
 	if (params.noStun()) {
 		std::cout
 		    << "No STUN server is configured. Only local hosts and public IP addresses supported."
@@ -57,8 +85,13 @@ int main(int argc, char **argv) try {
 		config.enableIceUdpMux = true;
 	}
 
-	localId = randomId(4);
-	std::cout << "The local ID is " << localId << std::endl;
+	localId = randomId(8);
+	if (gmode == std::string(MODE_SLAVE)) {
+	    std::cout << "*********** sweet ID ***********" << std::endl;
+	    std::cout << localId << std::endl;
+	    std::cout << "Please copy sweet ID to dad!!!" << std::endl;
+	    std::cout << "*********************************" << std::endl;
+	}
 
 	auto ws = std::make_shared<rtc::WebSocket>();
 
@@ -66,7 +99,9 @@ int main(int argc, char **argv) try {
 	auto wsFuture = wsPromise.get_future();
 
 	ws->onOpen([&wsPromise]() {
-		std::cout << "WebSocket connected, signaling ready" << std::endl;
+	    if (gdebug) {
+	        std::cout << "WebSocket connected, signaling ready" << std::endl;
+	    }
 		wsPromise.set_value();
 	});
 
@@ -100,7 +135,9 @@ int main(int argc, char **argv) try {
 		if (auto jt = peerConnectionMap.find(id); jt != peerConnectionMap.end()) {
 			pc = jt->second;
 		} else if (type == "offer") {
-			std::cout << "Answering to " + id << std::endl;
+		    if (gdebug) {
+			    std::cout << "Answering to " + id << std::endl;
+			}
 			pc = createPeerConnection(config, wws, id);
 		} else {
 			return;
@@ -121,16 +158,23 @@ int main(int argc, char **argv) try {
 	const std::string url = wsPrefix + params.webSocketServer() + ":" +
 	                        std::to_string(params.webSocketPort()) + "/" + localId;
 
-	std::cout << "WebSocket URL is " << url << std::endl;
+    if (gdebug) {
+	    std::cout << "WebSocket URL is " << url << std::endl;
+	}
 	ws->open(url);
 
 	std::cout << "Waiting for signaling to be connected..." << std::endl;
 	wsFuture.get();
-
+	if (gmode == std::string(MODE_SLAVE)) {
+	    std::cout << "Sweet Mode. https://eliassun.github.io/daddyeye.html for more information." << std::endl;
+	    while(true) {
+	        sleep(1);
+	    }
+	}
 	//while (true)
 	//{
 		std::string id;
-		std::cout << "Enter a remote ID to send an offer:" << std::endl;
+		std::cout << "Enter sweet id:" << std::endl;
 		std::cin >> id;
 		std::cin.ignore();
 
@@ -150,43 +194,86 @@ int main(int argc, char **argv) try {
 			return 0;
 			//continue;
 		}
-
-		std::cout << "Offering to " + id << std::endl;
+        if (gdebug) {
+		    std::cout << "Offering to " + id << std::endl;
+		}
 		auto pc = createPeerConnection(config, ws, id);
 
 		// We are the offerer, so create a data channel to initiate the process
-		const std::string label = "test";
+		const std::string label = "screenshot";
 		std::cout << "Creating DataChannel with label \"" << label << "\"" << std::endl;
-		auto dc = pc->createDataChannel(label);
-
+		gdc = pc->createDataChannel(label);
+		auto dc = gdc;
 		dc->onOpen([id, wdc = make_weak_ptr(dc)]() {
-			std::cout << "DataChannel from " << id << " open" << std::endl;
+		    if (gdebug) {
+			    std::cout << "DataChannel from " << id << " open" << std::endl;
+			}
 			if (auto dc = wdc.lock())
 				dc->send("Hello from " + localId);
 		});
 
 		dc->onClosed([id]() { std::cout << "DataChannel from " << id << " closed" << std::endl; });
 
-		dc->onMessage([id, wdc = make_weak_ptr(dc)](auto data) {
-			// data holds either std::string or rtc::binary
-			if (std::holds_alternative<std::string>(data))
-				std::cout << "Message from " << id << " received: " << std::get<std::string>(data)
-				          << std::endl;
-			else
-				std::cout << "Binary message from " << id
-				          << " received, size=" << std::get<rtc::binary>(data).size() << std::endl;
+		dc->onMessage([id, wdc = make_weak_ptr(dc), dc](auto data) {
+		    if (std::holds_alternative<std::string>(data)) {
+		        if (gdebug) {
+		            std::cout << "Message from " << id << " received: " << std::get<std::string>(data) << std::endl;
+		        }
+			    if (std::get<std::string>(data) == std::string(SEND_START)) {
+			        std::cout << "Receiving screenshot..." << std::endl;
+			        greceivedBuf.clear();
+			    } else if (std::get<std::string>(data) == std::string(SEND_END)) {
+			        std::cout << "Decoding a screen" << std::endl;
+			        decode_image(greceivedBuf);
+			        std::cout << "Decoded a screen" << std::endl;
+			    } else {
+			        greceivedBuf += std::get<std::string>(data);
+			    }
+		   } else {
+                std::cout << "Binary message from " << id
+                  << " received, size=" << std::get<rtc::binary>(data).size() << std::endl;
+		   }
+
 		});
 
 		dataChannelMap.emplace(id, dc);
 	//}
+    if (gmode == std::string(MODE_MASTER)) {
+        std::string msg = "";
+        while (msg != "quit") {
+            std::cout << "*************************************************************" << std::endl;
+            std::cout << "In Dad mode, waiting for a command from keyboard." << std::endl;
+            std::cout << "getscreen: get a sweet screenshot back." << std::endl;
+            std::cout << "open: open the screenshot after getscreen is done." << std::endl;
+            std::cout << "Enter a command on screen's anywhere from the key board." << std::endl;
+            std::cout << "**************************************************************" << std::endl;
+            std::cin >> msg;
+            std::cin.ignore();
+            if (msg == std::string(SEND_CAPTURE)) {
+                dc->send(msg);
+            } else if (msg == std::string(LOCAL_OPEN_IMG)) {
+                open_image();
+            } else {
+                std::cout << "getscreen: capture a screenshot of the peer" << std::endl;
+                std::cout << "open: open the recent captured screenshot of the peer" << std::endl;
+            }
+        }
+    } else {
+        std::cout << "In Salve mode, waiting for event from peer." << std::endl;
+        while (true) {
+            if (!gmsg.empty()) {
+                std::string cmd = gmsg.front();
+                std::cout << "event: " << cmd << std::endl;
+                gmsg.pop();
+                if (cmd == std::string(SEND_CAPTURE)) {
+                    sendScreen();
+                }
+            } else {
+                sleep(1);
+            }
+        }
 
-    std::string msg = "";
-	while (true && msg != "quit") {
-		std::cout << "Enter a message:" << std::endl;
-		std::cin >> msg;
-		std::cin.ignore();
-		sendScreen(dc);
-	}
+    }
 
 	std::cout << "Cleaning up..." << std::endl;
 
@@ -238,21 +325,39 @@ shared_ptr<rtc::PeerConnection> createPeerConnection(const rtc::Configuration &c
 
 		dc->onOpen([wdc = make_weak_ptr(dc)]() {
 			if (auto dc = wdc.lock())
-				dc->send("Hello from " + localId);
+				dc->send("{\"type\": \"feedback\", \"msg\": \"Hello from the sweet " + localId + "\"}");
 		});
 
 		dc->onClosed([id]() { std::cout << "DataChannel from " << id << " closed" << std::endl; });
 
-		dc->onMessage([id](auto data) {
-			// data holds either std::string or rtc::binary
-			if (std::holds_alternative<std::string>(data))
-				std::cout << "Message from " << id << " received: " << std::get<std::string>(data)
-				          << std::endl;
-			else
-				std::cout << "Binary message from " << id
-				          << " received, size=" << std::get<rtc::binary>(data).size() << std::endl;
-		});
+		dc->onMessage([id, wdc = make_weak_ptr(dc)](auto data) {
+		    if (std::holds_alternative<std::string>(data)) {
+                std::cout << "Message from " << id << " received: " << std::get<std::string>(data) << std::endl;
+                if (std::get<std::string>(data) == std::string(SEND_CAPTURE)) {
+			        if (auto dc = wdc.lock()) {
+			            dc->send("{\"type\": \"feedback\", \"msg\": \"Received a screenshot capture req. doing...\"}");
+                        std::cout << "sending a screen" << std::endl;
+                        std::string screen = capture_screen();
+                        dc->send(std::string(SEND_START));
+                        int n = screen.length()/512;
+                        int pos = 0;
+                        for (int i = 0; i < n; i++) {
+                            dc->send(screen.substr(pos, 512));
+                            pos += 512;
+                        }
+                        if (screen.length() - pos > 0) {
+                            dc->send(screen.substr(pos, screen.length() - pos));
+                        }
+                        dc->send(std::string(SEND_END));
+                        std::cout << "sent a screen" << std::endl;
+			        }
 
+			    }
+		   } else {
+                std::cout << "Binary message from " << id
+                  << " received, size=" << std::get<rtc::binary>(data).size() << std::endl;
+		   }
+		});
 		dataChannelMap.emplace(id, dc);
 	});
 
@@ -273,17 +378,19 @@ std::string randomId(size_t length) {
 	return id;
 }
 
-bool sendScreen(shared_ptr<rtc::DataChannel> dc) {
+void sendScreen() {
+    std::cout << "sending a screen" << std::endl;
     std::string screen = capture_screen();
+    gdc->send(std::string(SEND_START));
     int n = screen.length()/512;
     int pos = 0;
     for (int i = 0; i < n; i++) {
-        dc->send(screen.substr(pos, 512));
+        gdc->send(screen.substr(pos, 512));
         pos += 512;
     }
     if (screen.length() - pos > 0) {
-        dc->send(screen.substr(pos, screen.length() - pos));
+        gdc->send(screen.substr(pos, screen.length() - pos));
     }
-	std::cout << "\n sent a screen \n" << std::endl;
-	return true;
+    gdc->send(std::string(SEND_END));
+    std::cout << "sent a screen" << std::endl;
 }
