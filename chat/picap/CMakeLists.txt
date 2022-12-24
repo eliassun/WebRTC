@@ -7,6 +7,10 @@ set(CLIENT_SOURCES
 	main.cpp
 	parse_cl.cpp
 	parse_cl.h
+	base64.cpp
+	base64.h
+	capture.cpp
+	capture.h
 )
 
 add_executable(datachannel-picap ${CLIENT_SOURCES})

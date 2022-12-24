@@ -29,7 +29,16 @@ The automation process doesn't install the Verto WebRTC client, but the detail i
 This is to build a native App based on C++ SIP lib and C++ WebRTC lib. sip4webrtc is still an early stage project.
 It currently built the PJSIP lib and WebRTC lib for the Android.
 
-* Start to Run the Source Code
+* picap for MacOS
+This is a c++ client using the WebRTC data channel to capture and send a screenshot encoded as base64, then the receiver will decode it back to 
+a picture. The receiver can be a c++ client or a web browser. 
+Build:
+./buid.sh
+Run:
+one laptop run ./picap, another laptop run ./picap. The "./picap" will create a ID, take a part's ID, then input that ID
+to another party. then key in any character will send a screenshot to the peer. 
+
+* Start to create a network
 
 Add the AWS keys into vairable.tf or put the keys file to the correct location
 
