@@ -59,6 +59,9 @@ The first command line will allow any dad to capture the screen if he knows the 
 
 The 2nd command line will only allow one dad with the exact id to to capture the sweet's screen. So, the dad end needs to run first.
 
+* dadeye for MacOS
+This is the picap DaddyEye with graphic user interface. The UI looks same as https://eliassun.github.io/dadeye.png .
+
 * Start to create a network
 
 Add the AWS keys into vairable.tf or put the keys file to the correct location
