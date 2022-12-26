@@ -1,0 +1,717 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2DD2D66D2957C64E00A29F13 /* dadeyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D66C2957C64E00A29F13 /* dadeyeApp.swift */; };
+		2DD2D66F2957C64E00A29F13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D66E2957C64E00A29F13 /* ContentView.swift */; };
+		2DD2D6712957C65000A29F13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DD2D6702957C65000A29F13 /* Assets.xcassets */; };
+		2DD2D6752957C65000A29F13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DD2D6742957C65000A29F13 /* Preview Assets.xcassets */; };
+		2DD2D67F2957C65100A29F13 /* dadeyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D67E2957C65100A29F13 /* dadeyeTests.swift */; };
+		2DD2D6892957C65100A29F13 /* dadeyeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6882957C65100A29F13 /* dadeyeUITests.swift */; };
+		2DD2D68B2957C65100A29F13 /* dadeyeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D68A2957C65100A29F13 /* dadeyeUITestsLaunchTests.swift */; };
+		2DD2D6992957C71600A29F13 /* libdatachannel.0.18.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D6982957C71600A29F13 /* libdatachannel.0.18.0.dylib */; };
+		2DD2D69A2957C72000A29F13 /* libdatachannel.0.18.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2DD2D6982957C71600A29F13 /* libdatachannel.0.18.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2DD2D6AC2957C82400A29F13 /* capture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6A62957C82400A29F13 /* capture.cpp */; };
+		2DD2D6AD2957C82400A29F13 /* parse_cl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6A92957C82400A29F13 /* parse_cl.cpp */; };
+		2DD2D6AF2957C85300A29F13 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6AE2957C85300A29F13 /* base64.cpp */; };
+		2DD2D6B22957CA0C00A29F13 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6A52957C82400A29F13 /* main.cpp */; };
+		2DD2D6B42957D25D00A29F13 /* dadeyecbridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6B32957D25D00A29F13 /* dadeyecbridge.mm */; };
+		2DD2D6B72957E0E800A29F13 /* main.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2D6B62957DF7900A29F13 /* main.hpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2DD2D67B2957C65100A29F13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DD2D6612957C64E00A29F13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DD2D6682957C64E00A29F13;
+			remoteInfo = dadeye;
+		};
+		2DD2D6852957C65100A29F13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DD2D6612957C64E00A29F13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DD2D6682957C64E00A29F13;
+			remoteInfo = dadeye;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2DD2D69B2957C72000A29F13 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2DD2D69A2957C72000A29F13 /* libdatachannel.0.18.0.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2DD2D6692957C64E00A29F13 /* dadeye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dadeye.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD2D66C2957C64E00A29F13 /* dadeyeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dadeyeApp.swift; sourceTree = "<group>"; };
+		2DD2D66E2957C64E00A29F13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2DD2D6702957C65000A29F13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2DD2D6722957C65000A29F13 /* dadeye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dadeye.entitlements; sourceTree = "<group>"; };
+		2DD2D6742957C65000A29F13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2DD2D67A2957C65100A29F13 /* dadeyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dadeyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD2D67E2957C65100A29F13 /* dadeyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dadeyeTests.swift; sourceTree = "<group>"; };
+		2DD2D6842957C65100A29F13 /* dadeyeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dadeyeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD2D6882957C65100A29F13 /* dadeyeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dadeyeUITests.swift; sourceTree = "<group>"; };
+		2DD2D68A2957C65100A29F13 /* dadeyeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dadeyeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2DD2D6982957C71600A29F13 /* libdatachannel.0.18.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdatachannel.0.18.0.dylib; path = dadeye/libs/libdatachannel.0.18.0.dylib; sourceTree = "<group>"; };
+		2DD2D6A42957C82300A29F13 /* dadeye-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dadeye-Bridging-Header.h"; sourceTree = "<group>"; };
+		2DD2D6A52957C82400A29F13 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = dadeye/csrc/main.cpp; sourceTree = SOURCE_ROOT; };
+		2DD2D6A62957C82400A29F13 /* capture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = capture.cpp; path = dadeye/csrc/capture.cpp; sourceTree = SOURCE_ROOT; };
+		2DD2D6A72957C82400A29F13 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = dadeye/csrc/base64.h; sourceTree = SOURCE_ROOT; };
+		2DD2D6A82957C82400A29F13 /* capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = capture.h; path = dadeye/csrc/capture.h; sourceTree = SOURCE_ROOT; };
+		2DD2D6A92957C82400A29F13 /* parse_cl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = parse_cl.cpp; path = dadeye/csrc/parse_cl.cpp; sourceTree = SOURCE_ROOT; };
+		2DD2D6AA2957C82400A29F13 /* parse_cl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parse_cl.h; path = dadeye/csrc/parse_cl.h; sourceTree = SOURCE_ROOT; };
+		2DD2D6AE2957C85300A29F13 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base64.cpp; path = dadeye/csrc/base64.cpp; sourceTree = SOURCE_ROOT; };
+		2DD2D6B32957D25D00A29F13 /* dadeyecbridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = dadeyecbridge.mm; sourceTree = "<group>"; };
+		2DD2D6B52957D3CB00A29F13 /* dadeyewrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dadeyewrapper.h; sourceTree = "<group>"; };
+		2DD2D6B62957DF7900A29F13 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
+		2DD2D7B32958F0C700A29F13 /* dadeyeRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dadeyeRelease.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DD2D6662957C64E00A29F13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD2D6992957C71600A29F13 /* libdatachannel.0.18.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DD2D6772957C65100A29F13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DD2D6812957C65100A29F13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DD2D6602957C64E00A29F13 = {
+			isa = PBXGroup;
+			children = (
+				2DD2D66B2957C64E00A29F13 /* dadeye */,
+				2DD2D67D2957C65100A29F13 /* dadeyeTests */,
+				2DD2D6872957C65100A29F13 /* dadeyeUITests */,
+				2DD2D66A2957C64E00A29F13 /* Products */,
+				2DD2D6972957C71600A29F13 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2DD2D66A2957C64E00A29F13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D6692957C64E00A29F13 /* dadeye.app */,
+				2DD2D67A2957C65100A29F13 /* dadeyeTests.xctest */,
+				2DD2D6842957C65100A29F13 /* dadeyeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DD2D66B2957C64E00A29F13 /* dadeye */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D7B32958F0C700A29F13 /* dadeyeRelease.entitlements */,
+				2DD2D6B32957D25D00A29F13 /* dadeyecbridge.mm */,
+				2DD2D6A32957C7F600A29F13 /* cplus */,
+				2DD2D66C2957C64E00A29F13 /* dadeyeApp.swift */,
+				2DD2D66E2957C64E00A29F13 /* ContentView.swift */,
+				2DD2D6702957C65000A29F13 /* Assets.xcassets */,
+				2DD2D6722957C65000A29F13 /* dadeye.entitlements */,
+				2DD2D6732957C65000A29F13 /* Preview Content */,
+			);
+			path = dadeye;
+			sourceTree = "<group>";
+		};
+		2DD2D6732957C65000A29F13 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D6742957C65000A29F13 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2DD2D67D2957C65100A29F13 /* dadeyeTests */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D67E2957C65100A29F13 /* dadeyeTests.swift */,
+			);
+			path = dadeyeTests;
+			sourceTree = "<group>";
+		};
+		2DD2D6872957C65100A29F13 /* dadeyeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D6882957C65100A29F13 /* dadeyeUITests.swift */,
+				2DD2D68A2957C65100A29F13 /* dadeyeUITestsLaunchTests.swift */,
+			);
+			path = dadeyeUITests;
+			sourceTree = "<group>";
+		};
+		2DD2D6972957C71600A29F13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D6982957C71600A29F13 /* libdatachannel.0.18.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DD2D6A32957C7F600A29F13 /* cplus */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D6A72957C82400A29F13 /* base64.h */,
+				2DD2D6AE2957C85300A29F13 /* base64.cpp */,
+				2DD2D6A62957C82400A29F13 /* capture.cpp */,
+				2DD2D6A82957C82400A29F13 /* capture.h */,
+				2DD2D6A52957C82400A29F13 /* main.cpp */,
+				2DD2D6A92957C82400A29F13 /* parse_cl.cpp */,
+				2DD2D6AA2957C82400A29F13 /* parse_cl.h */,
+				2DD2D6A42957C82300A29F13 /* dadeye-Bridging-Header.h */,
+				2DD2D6B52957D3CB00A29F13 /* dadeyewrapper.h */,
+				2DD2D6B62957DF7900A29F13 /* main.hpp */,
+			);
+			path = cplus;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DD2D6682957C64E00A29F13 /* dadeye */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DD2D68E2957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeye" */;
+			buildPhases = (
+				2DD2D6652957C64E00A29F13 /* Sources */,
+				2DD2D6662957C64E00A29F13 /* Frameworks */,
+				2DD2D6672957C64E00A29F13 /* Resources */,
+				2DD2D69B2957C72000A29F13 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dadeye;
+			productName = dadeye;
+			productReference = 2DD2D6692957C64E00A29F13 /* dadeye.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2DD2D6792957C65100A29F13 /* dadeyeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DD2D6912957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeyeTests" */;
+			buildPhases = (
+				2DD2D6762957C65100A29F13 /* Sources */,
+				2DD2D6772957C65100A29F13 /* Frameworks */,
+				2DD2D6782957C65100A29F13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DD2D67C2957C65100A29F13 /* PBXTargetDependency */,
+			);
+			name = dadeyeTests;
+			productName = dadeyeTests;
+			productReference = 2DD2D67A2957C65100A29F13 /* dadeyeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2DD2D6832957C65100A29F13 /* dadeyeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DD2D6942957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeyeUITests" */;
+			buildPhases = (
+				2DD2D6802957C65100A29F13 /* Sources */,
+				2DD2D6812957C65100A29F13 /* Frameworks */,
+				2DD2D6822957C65100A29F13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DD2D6862957C65100A29F13 /* PBXTargetDependency */,
+			);
+			name = dadeyeUITests;
+			productName = dadeyeUITests;
+			productReference = 2DD2D6842957C65100A29F13 /* dadeyeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DD2D6612957C64E00A29F13 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					2DD2D6682957C64E00A29F13 = {
+						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
+					};
+					2DD2D6792957C65100A29F13 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 2DD2D6682957C64E00A29F13;
+					};
+					2DD2D6832957C65100A29F13 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 2DD2D6682957C64E00A29F13;
+					};
+				};
+			};
+			buildConfigurationList = 2DD2D6642957C64E00A29F13 /* Build configuration list for PBXProject "dadeye" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2DD2D6602957C64E00A29F13;
+			productRefGroup = 2DD2D66A2957C64E00A29F13 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DD2D6682957C64E00A29F13 /* dadeye */,
+				2DD2D6792957C65100A29F13 /* dadeyeTests */,
+				2DD2D6832957C65100A29F13 /* dadeyeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DD2D6672957C64E00A29F13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD2D6752957C65000A29F13 /* Preview Assets.xcassets in Resources */,
+				2DD2D6712957C65000A29F13 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DD2D6782957C65100A29F13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DD2D6822957C65100A29F13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DD2D6652957C64E00A29F13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD2D6B72957E0E800A29F13 /* main.hpp in Sources */,
+				2DD2D6B22957CA0C00A29F13 /* main.cpp in Sources */,
+				2DD2D6AC2957C82400A29F13 /* capture.cpp in Sources */,
+				2DD2D66F2957C64E00A29F13 /* ContentView.swift in Sources */,
+				2DD2D6B42957D25D00A29F13 /* dadeyecbridge.mm in Sources */,
+				2DD2D66D2957C64E00A29F13 /* dadeyeApp.swift in Sources */,
+				2DD2D6AF2957C85300A29F13 /* base64.cpp in Sources */,
+				2DD2D6AD2957C82400A29F13 /* parse_cl.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DD2D6762957C65100A29F13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD2D67F2957C65100A29F13 /* dadeyeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DD2D6802957C65100A29F13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD2D68B2957C65100A29F13 /* dadeyeUITestsLaunchTests.swift in Sources */,
+				2DD2D6892957C65100A29F13 /* dadeyeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DD2D67C2957C65100A29F13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DD2D6682957C64E00A29F13 /* dadeye */;
+			targetProxy = 2DD2D67B2957C65100A29F13 /* PBXContainerItemProxy */;
+		};
+		2DD2D6862957C65100A29F13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DD2D6682957C64E00A29F13 /* dadeye */;
+			targetProxy = 2DD2D6852957C65100A29F13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2DD2D68C2957C65100A29F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2DD2D68D2957C65100A29F13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		2DD2D68F2957C65100A29F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = dadeye/dadeye.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"dadeye/Preview Content\"";
+				DEVELOPMENT_TEAM = N9K64RM24N;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dadeye/include";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/dadeye/libs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeye;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "dadeye/cplus/dadeye-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2DD2D6902957C65100A29F13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = dadeye/dadeyeRelease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"dadeye/Preview Content\"";
+				DEVELOPMENT_TEAM = N9K64RM24N;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dadeye/include";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/dadeye/libs",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeye;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "dadeye/cplus/dadeye-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2DD2D6922957C65100A29F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9K64RM24N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeyeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dadeye.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dadeye";
+			};
+			name = Debug;
+		};
+		2DD2D6932957C65100A29F13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9K64RM24N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeyeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dadeye.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dadeye";
+			};
+			name = Release;
+		};
+		2DD2D6952957C65100A29F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9K64RM24N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeyeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = dadeye;
+			};
+			name = Debug;
+		};
+		2DD2D6962957C65100A29F13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9K64RM24N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeyeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = dadeye;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DD2D6642957C64E00A29F13 /* Build configuration list for PBXProject "dadeye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DD2D68C2957C65100A29F13 /* Debug */,
+				2DD2D68D2957C65100A29F13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DD2D68E2957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DD2D68F2957C65100A29F13 /* Debug */,
+				2DD2D6902957C65100A29F13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DD2D6912957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeyeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DD2D6922957C65100A29F13 /* Debug */,
+				2DD2D6932957C65100A29F13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DD2D6942957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeyeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DD2D6952957C65100A29F13 /* Debug */,
+				2DD2D6962957C65100A29F13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DD2D6612957C64E00A29F13 /* Project object */;
+}
