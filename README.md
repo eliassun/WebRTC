@@ -60,6 +60,7 @@ The first command line will allow any dad to capture the screen if he knows the 
 The 2nd command line will only allow one dad with the exact id to to capture the sweet's screen. So, the dad end needs to run first.
 
 * dadeye for MacOS
+The download link is https://eliassun.github.io/daddyeye.zip. It is >= MacOS 12 running on Intel CPU.
 This is the picap DaddyEye with graphic user interface. The UI looks same as https://eliassun.github.io/dadeye.png .
 
 * Start to create a network
@@ -70,3 +71,5 @@ terraform init
 
 terraform apply --auto-approve
 
+*Download:
+daddyeye zipped App: https://eliassun.github.io/daddyeye.zip
