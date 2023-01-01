@@ -12,6 +12,7 @@
 - (void) generateid;
 - (void) getscreen;
 - (void) display;
+- (NSString*) picpath;
 @end
 
 

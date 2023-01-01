@@ -12,38 +12,19 @@
     DadEyeWrapper().dadmode([sweetid cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 - (void) sweetmode:(NSString*) dadid {
-    NSFileManager       *fm = [NSFileManager defaultManager];
-    NSURL               *downloadsURL;
-
-    downloadsURL = [fm URLForDirectory:NSDownloadsDirectory
-                       inDomain:NSUserDomainMask appropriateForURL:nil
-                       create:YES error:nil];
-    NSString *path = downloadsURL.absoluteString;
-    DadEyeWrapper().sweetmode([dadid cStringUsingEncoding:NSUTF8StringEncoding], [path cStringUsingEncoding:NSUTF8StringEncoding]);
+    DadEyeWrapper().sweetmode([dadid cStringUsingEncoding:NSUTF8StringEncoding], [[self picpath] cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 - (void) generateid {
     DadEyeWrapper().generateid();
 }
 - (void) getscreen {
-    NSFileManager       *fm = [NSFileManager defaultManager];
-    NSURL               *downloadsURL;
-
-    downloadsURL = [fm URLForDirectory:NSDownloadsDirectory
-                       inDomain:NSUserDomainMask appropriateForURL:nil
-                       create:YES error:nil];
-    NSString *path = downloadsURL.absoluteString;
-    
-    DadEyeWrapper().getscreen([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    DadEyeWrapper().getscreen([[self picpath] cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 - (void) display {
-    NSFileManager       *fm = [NSFileManager defaultManager];
-    NSURL               *downloadsURL;
-
-    downloadsURL = [fm URLForDirectory:NSDownloadsDirectory
-                       inDomain:NSUserDomainMask appropriateForURL:nil
-                       create:YES error:nil];
-    NSString *path = downloadsURL.absoluteString;
-
-    DadEyeWrapper().display([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    DadEyeWrapper().display([[self picpath] cStringUsingEncoding:NSUTF8StringEncoding]);
+}
+- (NSString*) picpath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [paths objectAtIndex:0];
 }
 @end

@@ -202,8 +202,8 @@
 			buildConfigurationList = 2DD2D68E2957C65100A29F13 /* Build configuration list for PBXNativeTarget "dadeye" */;
 			buildPhases = (
 				2DD2D6652957C64E00A29F13 /* Sources */,
-				2DD2D6662957C64E00A29F13 /* Frameworks */,
 				2DD2D6672957C64E00A29F13 /* Resources */,
+				2DD2D6662957C64E00A29F13 /* Frameworks */,
 				2DD2D69B2957C72000A29F13 /* Embed Libraries */,
 			);
 			buildRules = (
@@ -495,6 +495,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dadeye/include";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -542,11 +543,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dadeye/Preview Content\"";
-				DEVELOPMENT_TEAM = N9K64RM24N;
+				DEVELOPMENT_TEAM = WP7JY3RFMU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dadeye/include";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -571,7 +573,7 @@
 					"-lstdc++",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = voipeye.dadeye;
+				PRODUCT_BUNDLE_IDENTIFIER = daddyeye.voipeye.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = macosx;
